@@ -1,26 +1,29 @@
 package com.example.week2exercise
 
-class User {
-    private var name: String = "MAD"
-    private var description : String = "Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna aliqua  "
-    private var id: Int = 0
-    private var followed: Boolean = false
+class User (name: String, description: String, id: Int, followed: Boolean) {
+    private var name: String = name
+    private var description : String = description
+    private var id: Int = id
+    private var followed: Boolean = followed
 
     init {
 
-
     }
 
-    fun UserName() : String {
-        return this.name
+    fun getName() : String {
+        return name
     }
 
-    fun UserDescription() : String {
-        return this.description
+    fun getDescription() : String {
+        return description
     }
 
-    fun UserFollowed() : Boolean {
-        return this.followed
+    fun getId() : Int {
+        return id
+    }
+
+    fun getFollowed() : Boolean {
+        return followed
     }
 
     fun UpdateFollow() {
