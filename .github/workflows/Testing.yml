@@ -1,0 +1,70 @@
+name: README build
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout current repository to Master branch
+        uses: actions/checkout@v1
+      - name: Setup NodeJs 13.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '13.x'
+      - name: Cache dependencies and build outputs to improve workflow execution time.
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-js-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        run: npm install
+      - name: Generate README file
+        run: node index.js
+      - name: Commit and Push new README.md to the repository
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout Source Codes
+        uses: actions/checkout@v2
+        
+      - name: Checkout Test Scripts
+        uses: actions/checkout@v2
+        with:
+          repository: Linus-Tay/JUnit_MAD_Exercise-2
+          path: testDirectory
+      - name: Check files
+        run: |
+            ls
+      - name: Create Test Files
+        run: |
+          cp app/src/main/res/layout/activity_main.xml testDirectory/test.xml
+          cp testDirectory/Exercise_Test-2.kt app/src/test/java/sg/edu/np/mad/madpractical/UserTest.kt
+          ls
+          cd app/src/test/java/sg/edu/np/mad/madpractical
+          ls
+          cd \
+      - name: Setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.13.7'
+      - name: Run XML Test
+        run: |
+          ls
+          cd testDirectory
+          go test -v
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+  
+      - name: Run Android Tests
+        run: ./gradlew test
+        
+      - name: Build Project
+        run: ./gradlew assemble
