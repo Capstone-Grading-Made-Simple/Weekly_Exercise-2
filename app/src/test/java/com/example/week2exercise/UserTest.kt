@@ -15,10 +15,4 @@ class UserTest {
         assertEquals(false, user.getFollowed())
     }
 
-    @Test
-    fun `test a`() {
-        val expected = 2
-        assertEquals(expected, 4)
-    }
-
 }
