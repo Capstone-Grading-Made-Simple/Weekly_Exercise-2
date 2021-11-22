@@ -1,4 +1,4 @@
-name: Android Build
+name: Weekly Exercise 2 Test
 
 on:
   push:
@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app
-          path: app/build/outputs/apk/debug/app-debug.zip
+          path: app/build/outputs/apk/debug/app-debug.apk
