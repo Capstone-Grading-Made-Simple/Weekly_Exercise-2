@@ -32,5 +32,5 @@ jobs:
         if: always()
         with:
           files: |
-            app/src/androidTest/java/**/*.kt
-            app/src/test/java/**/*.kt
+            app/src/androidTest/java/**/*.xml
+            app/src/test/java/**/*.xml
