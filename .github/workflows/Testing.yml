@@ -1,13 +1,18 @@
-name: Weekly Exercise 2 Test
+# Workflow name
+name: Build
 
 on:
+# When it will be triggered
+# And in which branch
+  pull_request:
   push:
     branches:
       - master
 
+# Where will they run
 jobs:
   build:
-    name: Build & Test Project
+    name: Build & Unit Test 
     runs-on: ubuntu-latest
 
     steps:
@@ -21,36 +26,25 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Run Tests
-        run: ./gradlew test
-
-      - name: Unit Tests Results
-        uses: actions/upload-artifact@v1
-        with:
-          name: unit-tests-results
-          path: app/build/reports/tests/testDebugUnitTest/index.html
-
-      - name: Build Project
-        run: ./gradlew assemble
+      - name: Unit Tests
+        run: ./gradlew testDebugUnitTest
 
       - name: Android Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
         if: ${{ always() }}
 
-  lint:
-    name: Lint Check
-    runs-on: ubuntu-18.04
+      - name: Build Project
+        run: ./gradlew assemble
 
+  androidTest:
+    name: Android Interface Test
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Set Up JDK 11
-        uses: actions/setup-java@v1
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2
         with:
-          java-version: 11
-      - name: Lint debug flavor
-        run: bash ./gradlew lintDebug --stacktrace
-      - name: Lint results
-        uses: actions/upload-artifact@v1
-        with:
-          name: app
-          path: app/build/reports/lint-results-debug.html
+          api-level: 29
+          script: ./gradlew connectedCheck
