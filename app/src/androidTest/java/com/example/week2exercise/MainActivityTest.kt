@@ -14,14 +14,5 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 
-    @Test
-    fun FollowButtonDisplayTest() {
-        val activityScenario = launch(MainActivity::class.java)
-        onView(withId(R.id.btnFollow)).perform(click())
-        onView(withId(R.id.btnFollow)).perform(click())
-        onView(withId(R.id.btnFollow)).perform(click())
-        onView(withId(R.id.btnFollow)).perform(click())
-        onView(withId(R.id.btnFollow)).perform(click())
-        onView(withId(R.id.btnFollow)).check(matches(withText("Unfollow")));
-    }
+
 }
