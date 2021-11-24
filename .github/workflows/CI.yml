@@ -30,6 +30,8 @@ jobs:
             ls
             cd src 
             ls
+            cd main
+            ls
             
       - name: Create Test Files
         run: |
