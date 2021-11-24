@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Linus-Tay/JUnit_MAD_Exercise-2
-          path: testDirectory
+          path: tDirectory
           
       - name: Check files
         run: |
@@ -35,8 +35,8 @@ jobs:
             
       - name: Create Test Files
         run: |
-          cp testDirectory/Exercise_Test-2.kt app/src/test/java/com/example/week2exercise/
-          cp testDirectory/MainActivity_Test.kt app/src/androidTest/java/com/example/week2exercise/
+          cp tDirectory/Exercise_Test-2.kt app/src/test/java/com/example/week2exercise/
+          cp tDirectory/MainActivity_Test.kt app/src/androidTest/java/com/example/week2exercise/
 
       - name: Set Up JDK 11
         uses: actions/setup-java@v1
