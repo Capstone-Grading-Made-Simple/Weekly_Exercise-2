@@ -19,11 +19,24 @@ jobs:
         with:
           repository: Linus-Tay/JUnit_MAD_Exercise-2
           path: tests
+          
+      - name: Check files
+        run: |
+            ls
+            cd app
+            cd src
+            ls
+            cd test
+            cd java
+            cd com
+            cd example
+            cd week2exercise
+            ls
             
       - name: Create Test Files
         run: |
-          cp tests/Exercise_Test-2.kt app/src/test/java/*/*/*/
-          cp tests/MainActivity_Test.kt app/src/test/java/*/*/*/
+          cp tests/Exercise_Test-2.kt app/src/test/java/com/example/week2exercise/
+          cp tests/MainActivity_Test.kt app/src/androidTest/java/com/example/week2exercise/
 
       - name: Set Up JDK 11
         uses: actions/setup-java@v1
