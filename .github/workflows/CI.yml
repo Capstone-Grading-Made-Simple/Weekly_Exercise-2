@@ -2,8 +2,7 @@ name: Weekly Exercise 2 Test
 
 on:
   push:
-    branches:
-      - master
+    branches: [master, main]
 
 jobs:
   build:
@@ -11,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Source Codes
+      - name: Checkout Current Repository
         uses: actions/checkout@v2
         
       - name: Checkout Test Scripts
@@ -19,13 +18,6 @@ jobs:
         with:
           repository: Linus-Tay/JUnit_MAD_Exercise-2
           path: tests
-          
-      - name: Check files
-        run: |
-            cd app
-            ls
-            cd src 
-            ls
             
       - name: Create Test Files
         run: |
@@ -43,7 +35,7 @@ jobs:
       - name: Run Tests
         run: ./gradlew testDebugUnitTest
         
-      - name: Android Test Report
+      - name: Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
         if: ${{ always() }}
 
@@ -55,3 +47,9 @@ jobs:
 
       - name: Build Project
         run: ./gradlew assemble
+
+      - name: List Directory
+        run: |
+          ls -a
+          cd ..
+          ls -a
