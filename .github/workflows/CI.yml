@@ -45,12 +45,12 @@ jobs:
         with:
           files: ./app/build/test-results/testDebugUnitTest/*.xml
 
-      - name: Build Project
-        run: ./gradlew assemble
+      #- name: Build Project
+      #  run: ./gradlew assemble
 
       - name: List Directory
         run: |
           ls -a
           cd ..
           ls -a
-          cat ./app/build/test-results/testDebugUnitTest/TEST-com.example.week2exercise.UserTest.xml
+          cat app/build/test-results/testDebugUnitTest/TEST-com.example.week2exercise.UserTest.xml
