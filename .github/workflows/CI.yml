@@ -35,8 +35,8 @@ jobs:
             
       - name: Create Test Files
         run: |
-          cp tests/Exercise_Test-2.kt main/app/src/test/java/com/example/week2exercise/
-          cp tests/MainActivity_Test.kt main/app/src/androidTest/java/com/example/week2exercise/
+          cp tests/Exercise_Test-2.kt main/app/src/test/java/com/example/week2exercise/UserTest.kt
+          cp tests/MainActivity_Test.kt main/app/src/androidTest/java/com/example/week2exercise/MainActivityTest.kt
 
       - name: Set Up JDK 11
         uses: actions/setup-java@v1
