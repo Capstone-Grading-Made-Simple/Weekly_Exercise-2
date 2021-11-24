@@ -13,24 +13,21 @@ jobs:
     steps:
       - name: Checkout Source Codes
         uses: actions/checkout@v2
+        with: 
+          path: main
         
       - name: Checkout Test Scripts
         uses: actions/checkout@v2
         with:
           repository: Linus-Tay/JUnit_MAD_Exercise-2
-          path: tDirectory
+          path: tests
           
       - name: Check files
         run: |
             ls
             cd app
-            cd src
             ls
-            cd test
-            cd java
-            cd com
-            cd example
-            cd week2exercise
+            cd src
             ls
             
       - name: Create Test Files
