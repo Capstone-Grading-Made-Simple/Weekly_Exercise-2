@@ -50,7 +50,5 @@ jobs:
 
       - name: List Directory
         run: |
-          ls -a
-          cd ..
-          ls -a
-          cat app/build/test-results/testDebugUnitTest/TEST-com.example.week2exercise.UserTest.xml
+          cd app/build/test-results/testDebugUnitTest
+          cat TEST-com.example.week2exercise.UserTest.xml
