@@ -38,18 +38,19 @@ jobs:
       - name: Gradle Run Android Tests
         run: ./gradlew connectedDebugAndroidTest
         
-      - name: Test Report
-        uses: asadmansr/android-test-report-action@v1.2.0
-        if: ${{ always() }}
-
       - name: Check Files
         run: |
-          cd app/build/test-results/testDebugUnitTest
+          ls
+          cd app
           ls
           cd build
           ls
           cd test-results
           ls
+
+      - name: Test Report
+        uses: asadmansr/android-test-report-action@v1.2.0
+        if: ${{ always() }}
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
