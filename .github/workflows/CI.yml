@@ -31,30 +31,29 @@ jobs:
       - name: Make gradlew Executable
         run: chmod +x ./gradlew
         
-      - name: Run Tests
-        run: ./gradlew testDebugUnitTest
+      #- name: Run Tests
+      #  run: ./gradlew testDebugUnitTest
 
-      - name: Test Report
-        uses: asadmansr/android-test-report-action@v1.2.0
-        if: ${{ always() }}
+      #- name: Test Report
+      #  uses: asadmansr/android-test-report-action@v1.2.0
+      #  if: ${{ always() }}
 
-      - name: Upload Test Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: unit_test_report
-          path: ./app/build/reports/tests/testDebugUnitTest/*
+      #- name: Upload Test Report
+      #  uses: actions/upload-artifact@v2
+      #  with:
+      #    name: unit_test_report
+      #    path: ./app/build/reports/tests/testDebugUnitTest/*
 
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: always()
-        with:
-          files: |
-            ./app/build/test-results/testDebugUnitTest/*.xml
+      #- name: Publish Unit Test Results
+      #  uses: EnricoMi/publish-unit-test-result-action@v1
+      #  if: always()
+      #  with:
+      #      ./app/build/test-results/testDebugUnitTest/*.xml
 
-      - name: List Directory
-        run: |
-          cd app/build/test-results/testDebugUnitTest
-          cat TEST-com.example.week2exercise.UserTest.xml
+      #- name: List Directory
+      #  run: |
+      #    cd app/build/test-results/testDebugUnitTest
+      #    cat TEST-com.example.week2exercise.UserTest.xml
 
   instrumentation-test:
     name: Android Instrumentation Test
