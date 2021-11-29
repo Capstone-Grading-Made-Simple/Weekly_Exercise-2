@@ -101,7 +101,7 @@ jobs:
         if: always()
         with:
           files: |
-            ./app/build/reports/androidTests/connected/com/example/week2exercise/*.xml
+            ./app/build/reports/androidTests/connected/*
 
       - name: Check Directory
         run: |
@@ -116,7 +116,4 @@ jobs:
           ls
           cd connected
           ls
-          cd com
-          cd example 
-          cd week2exercise
-          ls
+
