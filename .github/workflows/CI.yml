@@ -90,9 +90,16 @@ jobs:
 
       - name: Upload Test report
         uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: instrumentation_test_report
-          path: ./app/build/test-reports/androidTests/connected/*
+          path: ./app/build/reports/androidTests/connected/*
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+            ./app/build/reports/androidTests/connected/*
 
       - name: Check Directory
         run: |
@@ -101,5 +108,9 @@ jobs:
           ls
           cd build
           ls 
-          cd test-results
+          cd reports
+          ls
+          cd androidTests
+          ls
+          cd connected
           ls
