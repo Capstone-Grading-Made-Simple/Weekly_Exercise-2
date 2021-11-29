@@ -95,6 +95,12 @@ jobs:
           name: instrumentation_test_report
           path: ./app/build/reports/androidTests/connected/*
 
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+            ./app/build/test-results/testDebugUnitTest/*.xml
+
       - name: Publish Unit Test Results 2
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
