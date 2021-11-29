@@ -32,8 +32,10 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Run Tests
-        run: ./gradlew test
+      - name: Gradle Build
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build --scan
         
       - name: Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
@@ -44,11 +46,6 @@ jobs:
         if: always()
         with:
           files: ./app/build/test-results/testDebugUnitTest/*.xml
-
-      - name: Gradle Build
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build --scan
 
       - name: List Directory
         run: |
