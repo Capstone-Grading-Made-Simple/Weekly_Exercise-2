@@ -32,7 +32,7 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Gradle Build & Test
+      - name: Gradle Build & Run Tests
         run: ./gradlew build
         
       - name: Test Report
