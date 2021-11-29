@@ -33,7 +33,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Run Tests
-        run: ./gradlew
+        run: ./gradlew test
         
       - name: Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
