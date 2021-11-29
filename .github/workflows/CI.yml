@@ -99,7 +99,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          ./app/build/reports/androidTests/connected/*.xml
+            ./app/build/reports/androidTests/connected/*.xml
 
       - name: Check Directory
         run: |
