@@ -33,7 +33,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Run Tests
-        run: ./gradlew testDebug
+        run: ./gradlew test
         
       - name: Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
@@ -45,12 +45,10 @@ jobs:
         with:
           files: ./app/build/test-results/testDebugUnitTest/*.xml
 
-      - name: 'Publish Test Report'
-        if: always()
-        uses: actions/upload-artifact@v2-preview
+      - name: Gradle Build
+        uses: gradle/gradle-build-action@v2
         with:
-          name: 'test-report'
-          path: ./app/build/test-results/testDebugUnitTest/*
+          arguments: build
 
       - name: List Directory
         run: |
