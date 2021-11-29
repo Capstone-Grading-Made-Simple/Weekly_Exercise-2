@@ -29,16 +29,6 @@ jobs:
         with: 
           java-version: 11
 
-      - name: Check Files
-        run: |
-          ls
-          cd app
-          ls
-          cd build
-          ls
-          cd test-results
-          ls
-
       - name: Make gradlew executable
         run: chmod +x ./gradlew
         
