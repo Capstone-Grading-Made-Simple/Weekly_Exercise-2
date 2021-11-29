@@ -1,0 +1,54 @@
+name: Weekly Exercise 2 Test
+
+on:
+  push:
+    branches: [master, main]
+
+jobs:
+  build:
+    name: Build & Test Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Current Repository
+        uses: actions/checkout@v2
+        
+      - name: Checkout Test Scripts
+        uses: actions/checkout@v2
+        with:
+          repository: Linus-Tay/JUnit_MAD_Exercise-2
+          path: tests
+            
+      - name: Create Test Files
+        run: |
+          cp tests/Exercise_Test-2.kt app/src/test/java/com/example/week2exercise/UserTest.kt
+          cp tests/MainActivity_Test.kt app/src/androidTest/java/com/example/week2exercise/MainActivityTest.kt
+
+      - name: Set Up JDK 11
+        uses: actions/setup-java@v1
+        with: 
+          java-version: 11
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Run Tests
+        run: ./gradlew testDebugUnitTest
+        
+      - name: Test Report
+        uses: asadmansr/android-test-report-action@v1.2.0
+        if: ${{ always() }}
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: ./app/build/test-results/testDebugUnitTest/*.xml
+
+      #- name: Build Project
+      #  run: ./gradlew assemble
+
+      - name: List Directory
+        run: |
+          cd app/build/test-results/testDebugUnitTest
+          cat TEST-com.example.week2exercise.UserTest.xml
