@@ -35,7 +35,7 @@ jobs:
       - name: Gradle Build
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build --scan
+          arguments: build
         
       - name: Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
