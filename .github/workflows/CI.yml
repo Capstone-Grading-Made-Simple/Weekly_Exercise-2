@@ -29,15 +29,6 @@ jobs:
         with: 
           java-version: 11
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
-      - name: Gradle Run Tests
-        run: ./gradlew testDebugUnitTest
-
-      - name: Gradle Run Android Tests
-        run: ./gradlew connectedDebugAndroidTest
-        
       - name: Check Files
         run: |
           ls
@@ -47,6 +38,21 @@ jobs:
           ls
           cd test-results
           ls
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+        
+      - name: Gradle Run Tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
+
+      - name: Gradle Run Android Tests
+        run: ./gradlew connectedDebugAndroidTest
 
       - name: Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
