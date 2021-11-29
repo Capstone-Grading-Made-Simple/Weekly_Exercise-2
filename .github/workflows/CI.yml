@@ -79,7 +79,7 @@ jobs:
         uses: actions/setup-java@v1
         with: 
           java-version: 11
-          
+
       - name: Make gradlew Executable
         run: chmod +x ./gradlew
 
@@ -89,12 +89,18 @@ jobs:
           api-level: 29
           script: ./gradlew connectedCheck
 
-      - name: Test Report
-        uses: asadmansr/android-test-report-action@v1.2.0
-        if: ${{ always() }}
-
-      - name: Upload test report
+      - name: Upload Test report
         uses: actions/upload-artifact@v2
         with:
           name: instrumentation_test_report
           path: ./app/build/test-reports/androidTests/connected/*
+
+      - name: Check Directory
+        run: |
+          ls
+          cd app
+          ls
+          cd build
+          ls 
+          cd test-results
+          ls
