@@ -32,10 +32,8 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Gradle Build
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build
+      - name: Gradle Build & Test
+        run: ./gradlew build
         
       - name: Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
