@@ -42,17 +42,22 @@ jobs:
         uses: asadmansr/android-test-report-action@v1.2.0
         if: ${{ always() }}
 
+      - name: Check Files
+        run: |
+          cd app/build/test-results/testDebugUnitTest
+          ls
+          cd build
+          ls
+          cd test-results
+          ls
+
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          files: ./app/build/test-results/testDebugUnitTest/*.xml
-
-      - name: Archive test report
-        uses: actions/upload-artifact@v2
-        with:
-          name: Test report
-          path: build/reports/tests/test
+          files: |
+            ./app/build/test-results/testDebugUnitTest/*.xml
+            ./app/build/test-results/debugAndroidTestKotlin/*.xml
 
       - name: List Directory
         run: |
