@@ -6,7 +6,7 @@ on:
 
 jobs:
   unit-test:
-    name: Test Project
+    name: Unit Test
     runs-on: ubuntu-latest
 
     steps:
@@ -28,17 +28,17 @@ jobs:
         with: 
           java-version: 11
 
-      - name: Make gradlew executable
+      - name: Make gradlew Executable
         run: chmod +x ./gradlew
         
-      - name: Gradle Run Tests
+      - name: Run Tests
         run: ./gradlew testDebugUnitTest
 
       - name: Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
         if: ${{ always() }}
 
-      - name: Upload test report
+      - name: Upload Test Report
         uses: actions/upload-artifact@v2
         with:
           name: unit_test_report
@@ -70,12 +70,15 @@ jobs:
         with:
           repository: Linus-Tay/JUnit_MAD_Exercise-2
           path: tests
-            
+
       - name: Create Test Files
         run: |
           cp tests/MainActivity_Test.kt app/src/androidTest/java/com/example/week2exercise/MainActivityTest.kt
 
-      - name: Run espresso tests
+      - name: Make gradlew Executable
+        run: chmod +x ./gradlew
+
+      - name: Run Android Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
