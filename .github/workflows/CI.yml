@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v2-preview
         with:
           name: 'test-report'
-          path: build/reports/tests/test/*
+          path: ./app/build/test-results/testDebugUnitTest/*
 
       - name: List Directory
         run: |
