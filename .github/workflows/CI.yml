@@ -45,6 +45,12 @@ jobs:
         with:
           files: ./app/build/test-results/testDebugUnitTest/*.xml
 
+      - name: Archive test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test report
+          path: build/reports/tests/test
+
       - name: List Directory
         run: |
           cd app/build/test-results/testDebugUnitTest
