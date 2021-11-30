@@ -96,6 +96,11 @@ jobs:
           name: instrumentation_test_report
           path: ./app/build/reports/androidTests/connected/*
 
+      - name: Check Directory
+        run: |
+          ls
+          
+
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action/composite@v1
         if: always()
