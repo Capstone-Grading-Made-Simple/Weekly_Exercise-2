@@ -98,6 +98,6 @@ jobs:
       
       - name: Check index.html
         run: |
-          cat ./app/build/reports/androidTests/connect/index.html
+          cat ./app/build/reports/androidTests/connected/index.html
 
 
