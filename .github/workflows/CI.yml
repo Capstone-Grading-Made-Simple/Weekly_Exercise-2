@@ -95,16 +95,9 @@ jobs:
         with:
           name: instrumentation_test_report
           path: ./app/build/reports/androidTests/connected/*
-
-      - name: Check Directory
+      
+      - name: Check index.html
         run: |
-          ls
-          
+          cat ./app/build/reports/androidTests/connect/index.html
 
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v1
-        if: always()
-        with:
-          files: |
-            ./app/build/reports/androidTests/connected/*
 
