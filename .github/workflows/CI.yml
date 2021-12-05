@@ -5,60 +5,50 @@ on:
     branches: [master, main]
 
 jobs:
-  #unit-test:
-  #  name: Unit Test
-  #  runs-on: ubuntu-latest
+  unit-test:
+    name: Unit Test
+    runs-on: ubuntu-latest
 
-  #  steps:
-  #    - name: Checkout Current Repository
-  #      uses: actions/checkout@v2
+    steps:
+      - name: Checkout Current Repository
+        uses: actions/checkout@v2
         
-  #    - name: Checkout Test Scripts
-  #      uses: actions/checkout@v2
-  #      with:
-  #        repository: Linus-Tay/JUnit_MAD_Exercise-2
-  #        path: tests
+      - name: Checkout Test Scripts
+        uses: actions/checkout@v2
+        with:
+          repository: Linus-Tay/JUnit_MAD_Exercise-2
+          path: tests
             
-  #    - name: Create Test Files
-  #      run: |
-  #        cp tests/Exercise_Test-2.kt app/src/test/java/com/example/week2exercise/UserTest.kt
+      - name: Create Test Files
+        run: |
+          cp tests/Exercise_Test-2.kt app/src/test/java/com/example/week2exercise/UserTest.kt
 
-  #    - name: Set Up JDK 11
-  #      uses: actions/setup-java@v1
-  #      with: 
-  #        java-version: 11
+      - name: Set Up JDK 11
+        uses: actions/setup-java@v1
+        with: 
+          java-version: 11
 
-  #    - name: Make gradlew Executable
-  #      run: chmod +x ./gradlew
+      - name: Make gradlew Executable
+        run: chmod +x ./gradlew
         
-  #    - name: Run Tests
-  #      run: ./gradlew testDebugUnitTest
+      - name: Run Tests
+        run: ./gradlew testDebugUnitTest
 
-  #    - name: Test Report
-  #      uses: asadmansr/android-test-report-action@v1.2.0
-  #      if: ${{ always() }}
+      - name: Test Report
+        uses: asadmansr/android-test-report-action@v1.2.0
+        if: ${{ always() }}
 
-  #    - name: Upload Test Report
-  #      uses: actions/upload-artifact@v2
-  #      with:
-  #        name: unit_test_report
-  #        path: ./app/build/reports/tests/testDebugUnitTest/*
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit_test_report
+          path: ./app/build/reports/tests/testDebugUnitTest/*
+      
 
-  #    - name: Publish Unit Test Results
-  #      uses: EnricoMi/publish-unit-test-result-action@v1
-  #      if: always()
-  #      with:
-  #        files:
-  #          ./app/build/test-results/testDebugUnitTest/*.xml
-
-  #    - name: List Directory
-  #      run: |
-  #        cd app/build/test-results/testDebugUnitTest
-  #        cat TEST-com.example.week2exercise.UserTest.xml
 
   instrumentation-test:
     name: Android Instrumentation Test
-  #  needs: [unit-test]
+    needs: [unit-test]
 
     runs-on: macos-latest
     steps:
@@ -95,9 +85,5 @@ jobs:
         with:
           name: instrumentation_test_report
           path: ./app/build/reports/androidTests/connected/*
-      
-      - name: Check index.html
-        run: |
-          cat ./app/build/reports/androidTests/connected/index.html
 
 
