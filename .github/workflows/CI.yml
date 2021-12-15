@@ -90,7 +90,7 @@ jobs:
         run: |
           ls
 
-      - name: Pushes to Web Applicaiton Repository
+      - name: Pushes to Web Application Repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
