@@ -73,21 +73,18 @@ jobs:
       - name: Checkout Current Repository
         uses: actions/checkout@v2
 
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v2
+
       - name: List Directory
         run: |
-          ls
-          cd app
-          cd build
-          cd reports
-          cd androidTests
-          cd connected
           ls
 
       - name: Create Test Folder with Test Results
         run: |
           mkdir pushfolder
-          cp output/test/instrumentation-test-report/index.html pushfolder/unit-test.html
-          cp output/test/unit-test-report/index.html/ pushfolder/instrumentation-test.html
+          cp instrumentation-test-report/index.html pushfolder/unit-test.html
+          cp unit-test-report/index.html/ pushfolder/instrumentation-test.html
 
       - name: List Directory
         run: |
