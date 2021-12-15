@@ -69,6 +69,7 @@ jobs:
     needs: run-tests
     runs-on: ubuntu-latest
 
+    steps:
       - name: Checkout Current Repository
         uses: actions/checkout@v2
 
@@ -101,6 +102,6 @@ jobs:
           destination-github-username: 'Linus-Tay'
           destination-repository-name: 'Capstone-Website'
           user-email: regimelt@hotmail.com
-          target-branch: main
+          target-branch: master
 
 
