@@ -44,14 +44,14 @@ jobs:
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
         with:
-          name: output/test/unit-test-report
+          name: unit-test-report
           path: 
             ./app/build/reports/tests/testDebugUnitTest/*
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
         with:
-          name: output/test/instrumentation-test-report
+          name: instrumentation-test-report
           path: 
             ./app/build/reports/androidTests/connected/*
 
