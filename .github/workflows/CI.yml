@@ -100,5 +100,6 @@ jobs:
           destination-repository-name: 'Capstone-Website'
           user-email: regimelt@hotmail.com
           target-branch: master
+          target-directory: test-dir
 
 
