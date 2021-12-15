@@ -103,17 +103,25 @@ jobs:
           files: |
             ./app/build/reports/androidTests/connected/*
 
-      - name: Check Directory
+      - name: List Directory
         run: |
           ls
           cd app
-          ls
           cd build
-          ls 
           cd reports
-          ls
           cd androidTests
-          ls
           cd connected
-          ls
+
+      - name: Pushes test file
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: './app/build/reports/androidTests/connected/index.html'
+          destination_repo: 'Linus-Tay/Capstone-Website'
+          destination_folder: 'test-dir'
+          user_email: 'example@email.com'
+          user_name: 'dmnemec'
+          commit_message: 'Push from Automated Actions'
+
 
