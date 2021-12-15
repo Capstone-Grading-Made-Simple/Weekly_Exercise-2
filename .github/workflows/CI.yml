@@ -84,7 +84,7 @@ jobs:
         run: |
           mkdir pushfolder
           cp instrumentation-test-report/index.html pushfolder/unit-test.html
-          cp unit-test-report/index.html/ pushfolder/instrumentation-test.html
+          cp unit-test-report/index.html pushfolder/instrumentation-test.html
 
       - name: List Directory
         run: |
