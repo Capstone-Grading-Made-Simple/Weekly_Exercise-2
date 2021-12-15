@@ -5,7 +5,7 @@ on:
     branches: [master, main]
 
 jobs:
-  tests:
+  run-tests:
     name: Run Tests
     runs-on: macos-latest
 
@@ -44,14 +44,14 @@ jobs:
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
         with:
-          name: Unit Test Report
+          name: output/test/unit-test-report
           path: 
             ./app/build/reports/tests/testDebugUnitTest/*
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
         with:
-          name: Instrumentation Test Report
+          name: output/test/instrumentation-test-report
           path: 
             ./app/build/reports/androidTests/connected/*
 
@@ -64,16 +64,43 @@ jobs:
           cd androidTests
           cd connected
 
-      - name: Pushes test file
-        uses: dmnemec/copy_file_to_another_repo_action@main
+  push-tests:
+    name: Run Tests
+    needs: run-tests
+    runs-on: ubuntu-latest
+
+      - name: Checkout Current Repository
+        uses: actions/checkout@v2
+
+      - name: List Directory
+        run: |
+          ls
+          cd app
+          cd build
+          cd reports
+          cd androidTests
+          cd connected
+          ls
+
+      - name: Create Test Folder with Test Results
+        run: |
+          mkdir pushfolder
+          cp output/test/instrumentation-test-report/index.html pushfolder/unit-test.html
+          cp output/test/unit-test-report/index.html/ pushfolder/instrumentation-test.html
+
+      - name: List Directory
+        run: |
+          ls
+
+      - name: Pushes to Web Applicaiton Repository
+        uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: './app/build/reports/androidTests/connected/index.html'
-          destination_repo: 'Linus-Tay/Capstone-Website'
-          destination_folder: 'test-dir'
-          user_email: 'example@email.com'
-          user_name: 'dmnemec'
-          commit_message: 'Push from Automated Actions'
+          source-directory: 'pushfolder'
+          destination-github-username: 'Linus-Tay'
+          destination-repository-name: 'Capstone-Website'
+          user-email: regimelt@hotmail.com
+          target-branch: main
 
 
