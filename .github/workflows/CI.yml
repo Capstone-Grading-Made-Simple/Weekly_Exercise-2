@@ -55,14 +55,14 @@ jobs:
           path: 
             ./app/build/reports/androidTests/connected/*
 
-      - name: List Directory
-        run: |
-          ls
-          cd app
-          cd build
-          cd reports
-          cd androidTests
-          cd connected
+      #- name: List Directory
+      #  run: |
+      #    ls
+      #    cd app
+      #    cd build
+      #    cd reports
+      #    cd androidTests
+      #    cd connected
 
   push-tests:
     name: Push Tests
@@ -76,9 +76,9 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
 
-      - name: List Directory
-        run: |
-          ls
+      #- name: List Directory
+      #  run: |
+      #    ls
 
       - name: Create Test Folder with Test Results
         run: |
@@ -86,27 +86,27 @@ jobs:
           cp instrumentation-test-report/index.html pushfolder/unit-test.html
           cp unit-test-report/index.html pushfolder/instrumentation-test.html
 
-      - name: List Directory
-        run: |
-          ls
+      #- name: List Directory
+      #  run: |
+      #    ls
 
-      - name: Pushes to Web Application Repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: 'pushfolder'
-          destination-github-username: 'Linus-Tay'
-          destination-repository-name: 'Capstone-Website'
-          user-email: regimelt@hotmail.com
-          target-branch: master
-          target-directory: src
+      #- name: Pushes to Web Application Repository
+      #  uses: cpina/github-action-push-to-another-repository@main
+      #  env:
+      #    API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      #  with:
+      #    source-directory: 'pushfolder'
+      #    destination-github-username: 'Linus-Tay'
+      #    destination-repository-name: 'Capstone-Website'
+      #    user-email: regimelt@hotmail.com
+      #    target-branch: master
+      #    target-directory: src
 
-      - name: Copy
+      - name: Pushes Results to Web Application Repository
         uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.API_TOKEN_GITHUB }}
-          src_path: ./pushfolder
+          src_path: 'pushfolder'
           dst_owner: Linus-Tay
           dst_path: ./
           dst_repo_name: Capstone-Website
