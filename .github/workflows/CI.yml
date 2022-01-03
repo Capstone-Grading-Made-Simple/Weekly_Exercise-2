@@ -120,11 +120,20 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'pushfolder'
+          source_file: 'pushfolder/unit-test.html'
           destination_repo: 'Linus-Tay/Capstone-Website'
-          destination_folder: '../Capstone-Website'
           user_email: 'regimelt@hotmail.com'
           user_name: 'Linus-Tay'
           destination_branch: 'master'
 
+      - name: Pushes Results to Web Application Repository
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'pushfolder/instrumentation-test.html'
+          destination_repo: 'Linus-Tay/Capstone-Website'
+          user_email: 'regimelt@hotmail.com'
+          user_name: 'Linus-Tay'
+          destination_branch: 'master'
 
