@@ -82,10 +82,7 @@ jobs:
 
       - name: Create Test Folder with Test Results
         run: |
-          mkdir Weekly_Exercise-2
-          cd Weekly_Exercise-2
           mkdir pushfolder
-          cd ..
           cp instrumentation-test-report/index.html Weekly_Exercise-2/pushfolder/unit-test.html
           cp unit-test-report/index.html Weekly_Exercise-2/pushfolder/instrumentation-test.html
 
@@ -109,7 +106,7 @@ jobs:
         uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.API_TOKEN_GITHUB }}
-          src_path: pushfolder
+          src_path: ./pushfolder
           dst_owner: Linus-Tay
           dst_path: ./
           dst_repo_name: Capstone-Website
