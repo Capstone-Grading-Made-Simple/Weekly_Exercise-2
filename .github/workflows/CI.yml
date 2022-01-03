@@ -82,7 +82,10 @@ jobs:
 
       - name: Create Test Folder with Test Results
         run: |
+          mkdir Weekly_Exercise-2
+          cd Weekly_Exercise-2
           mkdir pushfolder
+          cd ..
           cp instrumentation-test-report/index.html Weekly_Exercise-2/pushfolder/unit-test.html
           cp unit-test-report/index.html Weekly_Exercise-2/pushfolder/instrumentation-test.html
 
