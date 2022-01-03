@@ -89,6 +89,9 @@ jobs:
       - name: List Directory
         run: |
           ls
+          cd .. 
+          ls
+      
 
       #- name: Pushes to Web Application Repository
       #  uses: cpina/github-action-push-to-another-repository@main
