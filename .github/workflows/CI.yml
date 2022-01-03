@@ -124,5 +124,6 @@ jobs:
           destination_repo: 'Linus-Tay/Capstone-Website'
           user_email: 'regimelt@hotmail.com'
           user_name: 'Linus-Tay'
+          destination_branch: 'master'
 
 
