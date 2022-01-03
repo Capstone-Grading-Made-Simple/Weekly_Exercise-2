@@ -106,7 +106,7 @@ jobs:
         uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.API_TOKEN_GITHUB }}
-          src_path: 'pushfolder'
+          src_path: /pushfolder
           dst_owner: Linus-Tay
           dst_path: ./
           dst_repo_name: Capstone-Website
