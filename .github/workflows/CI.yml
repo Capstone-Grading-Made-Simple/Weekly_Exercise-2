@@ -83,12 +83,12 @@ jobs:
       - name: Create Test Folder with Test Results
         run: |
           mkdir pushfolder
-          cp instrumentation-test-report/index.html pushfolder/unit-test.html
-          cp unit-test-report/index.html pushfolder/instrumentation-test.html
+          cp instrumentation-test-report/index.html Weekly_Exercise-2/pushfolder/unit-test.html
+          cp unit-test-report/index.html Weekly_Exercise-2/pushfolder/instrumentation-test.html
 
-      #- name: List Directory
-      #  run: |
-      #    ls
+      - name: List Directory
+        run: |
+          ls
 
       #- name: Pushes to Web Application Repository
       #  uses: cpina/github-action-push-to-another-repository@main
@@ -106,7 +106,7 @@ jobs:
         uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.API_TOKEN_GITHUB }}
-          src_path: /pushfolder
+          src_path: pushfolder
           dst_owner: Linus-Tay
           dst_path: ./
           dst_repo_name: Capstone-Website
