@@ -91,8 +91,7 @@ jobs:
           ls
           cd .. 
           ls
-      
-
+    
       #- name: Pushes to Web Application Repository
       #  uses: cpina/github-action-push-to-another-repository@main
       #  env:
@@ -115,7 +114,23 @@ jobs:
       #     dst_repo_name: Capstone-Website
       #     email: regimelt@hotmail.com
 
-      - name: Pushes Results to Web Application Repository
+      - name: Create file with information
+        run: |
+          echo "${GITHUB_REPOSITORY}" > context.txt
+          echo "${GITHUB_SHA}" >> context.txt
+
+      - name: Pushes Context File to Web Application Repository
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'context.txt'
+          destination_repo: 'Linus-Tay/Capstone-Website'
+          user_email: 'regimelt@hotmail.com'
+          user_name: 'Linus-Tay'
+          destination_branch: 'master'
+
+      - name: Pushes Unit Test Results to Web Application Repository
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
@@ -126,7 +141,7 @@ jobs:
           user_name: 'Linus-Tay'
           destination_branch: 'master'
 
-      - name: Pushes Results to Web Application Repository
+      - name: Pushes Instrumentation Test Results to Web Application Repository
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
