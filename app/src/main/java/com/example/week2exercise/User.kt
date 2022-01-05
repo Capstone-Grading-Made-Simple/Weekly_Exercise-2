@@ -11,7 +11,7 @@ class User (name: String, description: String, id: Int, followed: Boolean) {
     }
 
     fun getName() : String {
-        return name
+        return true
     }
 
     fun getDescription() : String {
