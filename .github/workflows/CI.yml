@@ -132,26 +132,3 @@ jobs:
           user_email: 'regimelt@hotmail.com'
           user_name: 'Linus-Tay'
           destination_branch: 'master'
-
-      - name: Pushes Unit Test Results to Web Application Repository
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source_file: 'unit-test.html'
-          destination_repo: 'Linus-Tay/Capstone-Website'
-          user_email: 'regimelt@hotmail.com'
-          user_name: 'Linus-Tay'
-          destination_branch: 'master'
-
-      - name: Pushes Instrumentation Test Results to Web Application Repository
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source_file: 'instrumentation-test.html'
-          destination_repo: 'Linus-Tay/Capstone-Website'
-          user_email: 'regimelt@hotmail.com'
-          user_name: 'Linus-Tay'
-          destination_branch: 'master'
-
