@@ -65,6 +65,7 @@ jobs:
 
   push-tests-pass:
     if: ${{ always() }}
+    needs: [run-tests]
     name: Push Tests
     runs-on: ubuntu-latest
 
@@ -83,11 +84,18 @@ jobs:
           cp unit-test-report/index.html instrumentation-test.html
 
       - name: Create file with information (Build Failed)
-        if: ${{ always() }} && steps.rearrange.outcome == 'failure'
+        if: ${{ failure }} && steps.rearrange.outcome == 'failure'
         run: |
           echo "${GITHUB_REPOSITORY}" > context.txt
           echo "${GITHUB_SHA}" >> context.txt
           echo "syntax" >> context.txt
+
+      - name: Create file with information (Not All Tests Passed)
+        if: ${{ failure() }} && steps.rearrange.outcome == 'success' && needs.run-tests.result == 'failure'
+        run: |
+          echo "${GITHUB_REPOSITORY}" > context.txt
+          echo "${GITHUB_SHA}" >> context.txt
+          echo "failure" >> context.txt
 
       - name: Create file with information (All Tests Passed)
         if: steps.rearrange.outcome == 'success' && needs.run-tests.result == 'success'
@@ -95,13 +103,6 @@ jobs:
           echo "${GITHUB_REPOSITORY}" > context.txt
           echo "${GITHUB_SHA}" >> context.txt
           echo "success" >> context.txt
-
-      - name: Create file with information (Not All Tests Passed)
-        if: ${{ always() }} && steps.rearrange.outcome == 'success' && needs.run-tests.result == 'failure'
-        run: |
-          echo "${GITHUB_REPOSITORY}" > context.txt
-          echo "${GITHUB_SHA}" >> context.txt
-          echo "failure" >> context.txt
 
       - name: Pushes Context File to Web Application Repository
         uses: dmnemec/copy_file_to_another_repo_action@main
