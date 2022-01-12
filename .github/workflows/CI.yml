@@ -83,6 +83,7 @@ jobs:
           cp unit-test-report/index.html instrumentation-test.html
 
       - name: Create file with information (Build Failed)
+        if: ${{ always() }}
         if: steps.rearrange.outcome == 'failure'
         run: |
           echo "${GITHUB_REPOSITORY}" > context.txt
@@ -97,6 +98,7 @@ jobs:
           echo "success" >> context.txt
 
       - name: Create file with information (Not All Tests Passed)
+        if: ${{ always() }}
         if: steps.rearrange.outcome == 'success' && needs.run-tests.result == 'failure'
         run: |
           echo "${GITHUB_REPOSITORY}" > context.txt
