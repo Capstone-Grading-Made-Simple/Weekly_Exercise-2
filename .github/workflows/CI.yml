@@ -84,14 +84,14 @@ jobs:
           cp unit-test-report/index.html instrumentation-test.html
 
       - name: Create file with information (Build Failed)
-        if: ${{ failure() }} && steps.rearrange.outcome == 'failure'
+        if: ${{ failure() }} && steps.build.outputs.exit_code == 0
         run: |
           echo "${GITHUB_REPOSITORY}" > context.txt
           echo "${GITHUB_SHA}" >> context.txt
           echo "syntax" >> context.txt
 
       - name: Create file with information (Not All Tests Passed)
-        if: ${{ failure() }} && steps.rearrange.outcome == 'success' && needs.run-tests.result == 'failure'
+        if: ${{ failure() }} && steps.build.outputs.exit_code == 0 && needs.run-tests.result == 'failure'
         run: |
           echo "${GITHUB_REPOSITORY}" > context.txt
           echo "${GITHUB_SHA}" >> context.txt

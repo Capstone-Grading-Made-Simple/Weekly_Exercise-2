@@ -4,7 +4,7 @@ class User (name: String, description: String, id: Int, followed: Boolean) {
     private var name: String = name
     private var description : String = description
     private var id: Int = id
-    private var followed: Boolean = followed
+    private var followed: Boolean = followe
 
     init {
 
