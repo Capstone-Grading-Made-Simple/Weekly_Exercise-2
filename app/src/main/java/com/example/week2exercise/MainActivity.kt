@@ -26,17 +26,17 @@ class MainActivity : AppCompatActivity() {
         name.setText(user.getName())
         description.setText(user.getDescription())
 
-        follow.setOnClickListener(object : View.OnClickListener {
+        follow.setOnClickListener(object : View.OnClickListener 
             override fun onClick(view: View) {
 
                 user.UpdateFollow()
                 if (user.getFollowed() == false) {
 
-                    follow.setText("Hello")
+                    follow.setText("Follow")
 
                 } else {
 
-                    follow.setText("Hello")
+                    follow.setText("Unfollow")
 
                 }
             }
