@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
                 user.UpdateFollow()
                 if (user.getFollowed() == false) {
 
-                    follow.setText("Hello")
+                    follow.setText("Follow")
 
                 } else {
 
-                    follow.setText("Hello")
+                    follow.setText("Unfollow")
 
                 }
             }
