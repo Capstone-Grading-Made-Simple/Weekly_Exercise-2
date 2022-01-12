@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
-class MainActivity : AppCompatActivity() 
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity()
                 user.UpdateFollow()
                 if (user.getFollowed() == false) {
 
-                    follow.setText("Follow")
+                    follow.setText("Hello")
 
                 } else {
 
-                    follow.setText("Unfollow")
+                    follow.setText("Hello")
 
                 }
             }
