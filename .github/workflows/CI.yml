@@ -4,6 +4,10 @@ on:
   push:
     branches: [master, main]
 
+env:
+  OWNER: Linus-Tay
+  REPONAME: Capstone-Website
+
 jobs:
   run-tests:
     name: Run Tests
@@ -59,16 +63,8 @@ jobs:
           path: 
             ./app/build/reports/androidTests/connected/*
 
-      #- name: List Directory
-      #  run: |
-      #    ls
-      #    cd app
-      #    cd build
-      #    cd reports
-      #    cd androidTests
-      #    cd connected
-
-  push-tests:
+  push-tests-pass:
+    if: ${{ always() }}
     name: Push Tests
     runs-on: ubuntu-latest
 
@@ -78,10 +74,6 @@ jobs:
 
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
-
-      #- name: List Directory
-      #  run: |
-      #    ls
 
       - name: Rearrange path location of test results
         id: rearrange
