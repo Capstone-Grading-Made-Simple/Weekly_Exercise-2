@@ -84,14 +84,14 @@ jobs:
           cp unit-test-report/index.html instrumentation-test.html
 
       - name: Create file with information (Build Failed)
-        if: ${{ failure() }} && steps.build.outputs.exit_code == 0
+        if: steps.build.outputs.exit_code == 0
         run: |
           echo "${GITHUB_REPOSITORY}" > context.txt
           echo "${GITHUB_SHA}" >> context.txt
           echo "syntax" >> context.txt
 
       - name: Create file with information (Not All Tests Passed)
-        if: ${{ failure() }} && steps.build.outputs.exit_code == 0 && needs.run-tests.result == 'failure'
+        if: steps.build.outputs.exit_code == 0 && needs.run-tests.result == 'failure'
         run: |
           echo "${GITHUB_REPOSITORY}" > context.txt
           echo "${GITHUB_SHA}" >> context.txt
@@ -110,7 +110,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: 'context.txt'
-          destination_repo: 'Linus-Tay/Capstone-Website'
+          destination_repo: 'Linus-Tay/StoringHTMLInputs'
           user_email: 'regimelt@hotmail.com'
           user_name: 'Linus-Tay'
           destination_branch: 'master'
