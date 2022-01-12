@@ -83,8 +83,7 @@ jobs:
           cp unit-test-report/index.html instrumentation-test.html
 
       - name: Create file with information (Build Failed)
-        if: ${{ always() }}
-        if: steps.rearrange.outcome == 'failure'
+        if: ${{ always() }} && steps.rearrange.outcome == 'failure'
         run: |
           echo "${GITHUB_REPOSITORY}" > context.txt
           echo "${GITHUB_SHA}" >> context.txt
