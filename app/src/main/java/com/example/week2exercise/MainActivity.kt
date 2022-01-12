@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
             override fun onClick(view: View) {
 
                 user.UpdateFollow()
-                if (user.getFollowed() == false) 
+                if (user.getFollowed() == false) {
 
-                    follow.setText("Follow")
+                    follow.setText("Follow"
 
                 } else {
 
