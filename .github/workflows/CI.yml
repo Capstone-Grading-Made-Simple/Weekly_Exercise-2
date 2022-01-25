@@ -4,6 +4,10 @@ on:
   push:
     branches: [master, main]
 
+env:
+  OWNER: Linus-Tay
+  REPONAME: Capstone-Website
+
 jobs:
   run-tests:
     name: Run Tests
@@ -106,8 +110,14 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: 'context.txt'
-          destination_repo: 'Linus-Tay/StoringHTMLInputs'
+          destination_repo: ${{env.OWNER}} + '/' ${{env.REPONAME}}
           user_email: 'regimelt@hotmail.com'
           user_name: 'Linus-Tay'
           destination_branch: 'master'
 
+      - name: Test
+        uses: Linus-Tay/store-text-file-in-firebase@v1.8
+        with:
+          owner: ${{env.OWNER}}
+          repoName: ${{env.REPONAME}}
+          fileName: "context.txt"
