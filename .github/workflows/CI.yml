@@ -4,10 +4,6 @@ on:
   push:
     branches: [master, main]
 
-env:
-  OWNER: Linus-Tay
-  REPONAME: Capstone-Website
-
 jobs:
   run-tests:
     name: Run Tests
@@ -114,3 +110,4 @@ jobs:
           user_email: 'regimelt@hotmail.com'
           user_name: 'Linus-Tay'
           destination_branch: 'master'
+
