@@ -6,6 +6,8 @@ on:
 
 env:
   OWNER: Capstone-Grading-Made-Simple
+
+  # Please change these accordingly
   YOURNAME: Linus Tay
   REPONAME: Weekly_Exercise-2
 
@@ -111,14 +113,15 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: 'context.txt'
-          destination_repo: ${{env.OWNER}}/${{env.REPONAME}}
+          destination_repo: Linus-Tay/StoringHTMLInputs
           user_email: 'regimelt@hotmail.com'
           user_name: 'Linus-Tay'
-          destination_branch: 'master'
+          destination_branch: 'context'
 
       - name: Test
-        uses: Linus-Tay/store-text-file-in-firebase@v1.8
+        uses: Linus-Tay/store-text-file-in-firebase@v1.9
         with:
-          owner: ${{env.YOURNAME}}
+          owner: ${{env.OWNER}}
+          yourName: ${{env.YOURNAME}}
           repoName: ${{env.REPONAME}}
           fileName: "context.txt"
