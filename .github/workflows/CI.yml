@@ -6,6 +6,7 @@ on:
 
 env:
   OWNER: Capstone-Grading-Made-Simple
+  YOURNAME: Linus Tay
   REPONAME: Weekly_Exercise-2
 
 jobs:
@@ -118,6 +119,6 @@ jobs:
       - name: Test
         uses: Linus-Tay/store-text-file-in-firebase@v1.8
         with:
-          owner: ${{env.OWNER}}
+          owner: ${{env.YOURNAME}}
           repoName: ${{env.REPONAME}}
           fileName: "context.txt"
