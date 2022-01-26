@@ -5,8 +5,8 @@ on:
     branches: [master, main]
 
 env:
-  OWNER: Linus-Tay
-  REPONAME: Capstone-Website
+  OWNER: Capstone-Grading-Made-Simple
+  REPONAME: Weekly_Exercise-2
 
 jobs:
   run-tests:
