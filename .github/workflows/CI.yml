@@ -113,7 +113,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: 'context.txt'
-          destination_repo: Linus-Tay/StoringHTMLInputs
+          destination_repo: ${{env.OWNER}}/${{env.REPONAME}}
           user_email: 'regimelt@hotmail.com'
           user_name: 'Linus-Tay'
           destination_branch: 'context'
