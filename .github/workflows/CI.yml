@@ -119,7 +119,7 @@ jobs:
     #       destination_branch: 'context'
 
       - name: Test
-        uses: Linus-Tay/store-text-file-in-firebase@v2.8
+        uses: Linus-Tay/store-text-file-in-firebase@v2.9
         with:
           owner: ${{env.OWNER}}
           yourName: ${{env.YOURNAME}}
