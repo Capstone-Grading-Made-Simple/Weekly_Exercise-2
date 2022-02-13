@@ -5,11 +5,11 @@
 
 1.	Create a new project with the following configuration,
 
-a.	Empty Activity
+* Empty Activity
 
-b.	Language: Kotlin
+* Language: Kotlin
 
-c.	Minimum API level: API 30: Android 11 (R)
+* Minimum API level: API 30: Android 11 (R)
 
 2.	Create a User class based on the class diagram below.
 
